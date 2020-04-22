@@ -7,74 +7,74 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import('../components/Home')
+    component: () => import('../views/Home')
   },
   {
     path: '/classify',
     name: 'Classify',
-    component: () => import('../components/Classify')
+    component: () => import('../views/Classify')
   },
   {
     path: '/detail',
     name: 'Detail',
-    component: () => import('../components/Detail')
+    component: () => import('../views/Detail')
   },
   {
     path: '/hc',
     name: 'HC',
-    component: () => import('../components/HC'),
+    component: () => import('../views/HC'),
     children: [
       {
         path: 'history',
         name: 'History',
-        component: () => import('../components/HC/History')
+        component: () => import('../views/HC/History')
       },
       {
         path: 'collection',
         name: 'Collection',
-        component: () => import('../components/HC/Collection')
+        component: () => import('../views/HC/Collection')
       }
     ]
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../components/Login')
+    component: () => import('../views/Login')
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('../components/Register')
+    component: () => import('../views/Register')
   },
   {
     path: '/more',
     name: 'More',
-    component: () => import('../components/More')
+    component: () => import('../views/More')
   },
   {
     path: '/my',
     name: 'My',
-    component: () => import('../components/My')
+    component: () => import('../views/My')
   },
   {
     path: '/ranking',
     name: 'Ranking',
-    component: () => import('../components/Ranking')
+    component: () => import('../views/Ranking')
   },
   {
     path: '/search',
     name: 'Search',
-    component: () => import('../components/Search')
+    component: () => import('../views/Search')
   },
   {
     path: '/search-result',
     name: 'SearchResult',
-    component: () => import('../components/SearchResult')
+    component: () => import('../views/SearchResult')
   },
   {
     path: '/vip',
     name: 'Vip',
-    component: () => import('../components/Vip')
+    component: () => import('../views/Vip')
   },
   {
     path: '/',
