@@ -56,3 +56,19 @@ export const getVipList = () => {
     })
   })
 }
+
+// 获取热门搜索数据
+export const getHotList = () => {
+  return require.get('/api/comic/hotsearch?apptype=8&appversion=1.0&channel=web-app&appType=8')
+}
+
+// 获取搜索面板的数据
+export const getSearchArr = (searchValue) => {
+  return require({
+    method: 'get',
+    url: '/api/comic_v2/searchindex?apptype=8&appversion=1.0&channel=web-app&type=2',
+    params: {
+      name: searchValue
+    }
+  })
+}
