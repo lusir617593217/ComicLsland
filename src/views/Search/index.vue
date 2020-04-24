@@ -5,7 +5,7 @@
       <img @click="goBack" src="../../assets/images/back_w.png" alt="">
       <div class="search-box">
         <i class="iconfont icon-sousuo"></i>
-        <input type="text" v-model="searchValue" placeholder="漫画名 | 作者 ^_^">
+        <input type="text" v-model.trim="searchValue" placeholder="漫画名 | 作者 ^_^">
       </div>
       <p @click="handleClick(searchValue)">搜索</p>
     </div>
@@ -81,30 +81,17 @@ export default {
     // 获取热搜列表
     getHotList () {
       getHotList().then(res => {
-        if (res.code === 200) {
-          this.hotWordList = res.info.hotWordsList
-        } else {
-          console.log(res.code_msg)
-        }
-      }).catch(err => {
-        console.log(err)
-        alert('网络异常，请稍后重试')
+        this.hotWordList = res.info.hotWordsList
       })
     },
     // 获取搜索面板数据
     getSearchArr (searchValue) {
       getSearchArr(searchValue).then(res => {
-        if (res.code === 200) {
-          this.searchList = res.info
-        } else {
-          alert(res.code_msg)
-        }
-      }).catch(err => {
-        console.log(err)
-        alert('网络异常，请稍后重试')
+        this.searchList = res.info
       })
     },
     handleClick (name) {
+      if (!name) return
       // 保存数据
       this.saveSearchKey(name)
       // 跳转搜索结果页

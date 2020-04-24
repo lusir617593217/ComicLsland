@@ -1,5 +1,7 @@
 // 引入 axios
 import axios from 'axios'
+// 引入 vant 第三方库
+import { Notify } from 'vant'
 
 // 创建 axios 实例
 const instance = axios.create({
@@ -20,9 +22,15 @@ instance.interceptors.request.use(function (config) {
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
   // 对响应数据做点什么
+  const res = response.data
+  if (!res.code === 200) { // 统一错误处理
+    Notify(res.code_msg) // vant 库中的方法
+    return Promise.reject(res.code_msg)
+  }
   return response.data
 }, function (error) {
   // 对响应错误做点什么
+  Notify('网络异常，请稍后重试')
   return Promise.reject(error)
 })
 

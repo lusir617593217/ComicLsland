@@ -10,7 +10,7 @@
       <!-- card -->
       <div class="cartoon-card" v-for="item in typeList" :key="item.bigbook_id">
         <div class="card-left">
-          <img :src="item.coverurl" alt="">
+          <img v-lazy="item.coverurl" alt="">
         </div>
         <div class="card-right">
           <h3>{{ item.bigbook_name }}</h3>
@@ -29,9 +29,9 @@ import MyHeader from '@/components/MyHeader'
 import Nav from '@/components/Nav'
 
 // 引入 getNav
-import { getNav, getTypeList } from '../../api/cartoon'
+import { getNav, getTypeList } from '@/api/cartoon'
 // 引入解密文件
-import { unformat } from '../../utils/apiHelper'
+import { unformat } from '@/utils/apiHelper'
 
 export default {
   name: 'Classfiy',
@@ -48,14 +48,7 @@ export default {
   methods: {
     getNav () {
       return getNav().then(res => {
-        if (res.code === 200) {
-          this.navList = res.info
-        } else {
-          alert(res.code_msg)
-        }
-      }).catch(err => {
-        console.log(err)
-        alert('网络请求失败，请稍后重试')
+        this.navList = res.info
       })
     },
     changeNav (data) {

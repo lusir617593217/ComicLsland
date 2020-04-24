@@ -1,3 +1,4 @@
+// 底边框 1px
 @mixin border-bottom {
   position: relative;
 
@@ -9,6 +10,21 @@
     height: 1px;
     width: 100%;
     background-color: #ccc;
+    transform: scaleY(0.5);
+  }
+}
+
+@mixin border-bottom-f4 {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #f4f4f4;
     transform: scaleY(0.5);
   }
 }

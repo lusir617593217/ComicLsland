@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// 导入 进度条组件
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+// 如果不需要转圈配置如下代码，默认是 true
+NProgress.configure({ showSpinner: false })
 
 Vue.use(VueRouter)
 
@@ -77,6 +82,11 @@ const routes = [
     component: () => import('../views/Vip')
   },
   {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/About')
+  },
+  {
     path: '/',
     redirect: '/home'
   }
@@ -84,6 +94,17 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+// 全局前置路由守卫
+router.beforeEach((to, from, next) => {
+  NProgress.start() // 进度条开始
+  next()
+})
+
+// 全局后置路由守卫
+router.afterEach(() => {
+  NProgress.done() // 进度条消失
 })
 
 export default router

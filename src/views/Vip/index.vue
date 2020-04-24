@@ -6,11 +6,11 @@
       <!-- card -->
       <div class="cartoon-card" v-for="item in typeList" :key="item.bigbookid">
         <div class="card-left">
-          <img :src="item.coverurl" alt="">
+          <img v-lazy="item.coverurl" alt="">
         </div>
         <div class="card-right">
           <h3>{{ item.bigbook_name }}</h3>
-          <p class="author">作者：<span>{{ bigbook_author }}</span></p>
+          <p class="author">作者：<span>{{ item.bigbook_author }}</span></p>
           <p>人气：{{ (item.bigbookview/100000000).toFixed(2) }}亿</p>
         </div>
       </div>

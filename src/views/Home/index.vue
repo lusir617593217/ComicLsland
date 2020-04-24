@@ -61,7 +61,6 @@ export default {
       this.swiperList = res.info
     })
     getContent().then(res => {
-      // console.log(res)
       this.contentList = res.info
     })
   }

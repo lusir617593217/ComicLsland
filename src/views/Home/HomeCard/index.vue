@@ -3,14 +3,20 @@
     <div class="card" v-for="item1 in contentList" :key="item1.specialid">
       <div class="header">
         <p>
-          <img :src="item1.icon" alt="">
+          <img v-lazy="item1.icon" alt="">
           {{ item1.name }}
         </p>
-        <router-link class="more" to="more">更多 &gt;</router-link>
+        <router-link class="more" :to="{
+          path: '/more',
+          query: {
+            name: item1.name,
+            special: item1.specialid
+          }
+        }">更多 &gt;</router-link>
       </div>
       <ul class="content-type-1" v-if="item1.comicsviewtype===1">
         <li class="item" v-for="item2 in item1.comicslist" :key="item2.bigbook_id">
-          <img :src="JSON.parse(item2.extension).xsyzfx" alt="">
+          <img v-lazy="JSON.parse(item2.extension).xsyzfx" alt="">
           <p>{{ item2.bigbook_name }}</p>
           <span>{{ JSON.parse(item2.extension).recommendwords }}</span>
         </li>
@@ -22,7 +28,7 @@
       </ul>
       <ul class="content-type-5" v-if="item1.comicsviewtype===5">
         <li class="item" v-for="item2 in item1.comicslist" :key="item2.bigbook_id">
-          <img :src="item2.coverurl" alt="">
+          <img v-lazy="item2.coverurl" alt="">
           <p>{{ item2.bigbook_name }}</p>
           <span>{{item2.key_name}}</span>
         </li>
@@ -30,7 +36,7 @@
       <ul class="content-type-3" v-if="item1.comicsviewtype===3">
         <li class="item" v-for="item2 in item1.comicslist" :key="item2.bigbook_id">
           <div class="item-left">
-            <img :src="JSON.parse(item2.extension).scfk344_202" alt="">
+            <img v-lazy="JSON.parse(item2.extension).scfk344_202" alt="">
           </div>
           <div class="item-right">
             <p class="item-title">{{ item2.bigbook_name }}</p>

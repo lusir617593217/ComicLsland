@@ -72,3 +72,32 @@ export const getSearchArr = (searchValue) => {
     }
   })
 }
+
+// 获取搜索结果数据
+export const getSearchResults = (searchKey) => {
+  return require({
+    method: 'get',
+    url: 'https://mhd.zhuishushenqi.com/comic_v2/searchbookauthor?apptype=8&appversion=1.0&channel=web-app&type=2&pageno=1&pagesize=100',
+    params: {
+      name: searchKey
+    }
+  })
+}
+
+// 获取更多页面数据 {"special":"954"}
+export const getMoreList = (special) => {
+  return require({
+    method: 'post',
+    url: '/api/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app',
+    data: format({ special })
+  })
+}
+
+// 获取历史 推荐数据
+export const getHistoryRecomment = () => {
+  return require({
+    method: 'post',
+    url: '/api/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app',
+    data: format({ special: 3 })
+  })
+}

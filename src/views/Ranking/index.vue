@@ -10,7 +10,7 @@
       <!-- card -->
       <div class="cartoon-card" v-for="item in typeList" :key="item.bigbookid">
         <div class="card-left">
-          <img :src="item.coverurl" alt="">
+          <img v-lazy="item.coverurl" alt="">
         </div>
         <div class="card-right">
           <h3>{{ item.name }}</h3>
