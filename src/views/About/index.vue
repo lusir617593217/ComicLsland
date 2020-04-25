@@ -5,7 +5,7 @@
 
     <!-- download -->
     <div class="download">
-      <img src="../../assets//images/download.png" alt="">
+      <img src="@/assets//images/download.png" alt="">
       <button>立即下载</button>
     </div>
 
@@ -53,7 +53,7 @@
 
 <script>
 // 引入 header 组件
-import MyHeader from '../../components/MyHeader'
+import MyHeader from '@/components/MyHeader'
 export default {
   name: 'About',
   components: {
@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/css/mixin.scss';
+@import '@/assets/css/mixin.scss';
 
 .page-about {
   height: 100%;

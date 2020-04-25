@@ -6,18 +6,20 @@
     <!-- nav start -->
     <Nav :navList="navList" @change="changeNav"></Nav>
 
-    <main>
-      <!-- card -->
-      <div class="cartoon-card" v-for="item in typeList" :key="item.bigbookid">
-        <div class="card-left">
-          <img v-lazy="item.coverurl" alt="">
+    <main class="my-scroll">
+      <section>
+        <!-- card -->
+        <div class="cartoon-card" v-for="item in typeList" :key="item.bigbookid">
+          <div class="card-left">
+            <img v-lazy="item.coverurl" alt="">
+          </div>
+          <div class="card-right">
+            <h3>{{ item.name }}</h3>
+            <p class="author">作者：<span>{{ item.author }}</span></p>
+            <p>人气：{{ (item.weekhits/10000).toFixed(2) }}亿</p>
+          </div>
         </div>
-        <div class="card-right">
-          <h3>{{ item.name }}</h3>
-          <p class="author">作者：<span>{{ item.author }}</span></p>
-          <p>人气：{{ (item.weekhits/10000).toFixed(2) }}亿</p>
-        </div>
-      </div>
+      </section>
     </main>
   </div>
 </template>
@@ -32,6 +34,8 @@ import Nav from '@/components/Nav'
 import { unformat } from '@/utils/apiHelper'
 // 引入 getRankList 方法
 import { getRankList } from '@/api/cartoon'
+// 引入滚动插件
+import BScroll from 'better-scroll'
 
 export default {
   name: 'Ranking',
@@ -66,6 +70,13 @@ export default {
   },
   created () {
     this.getRankList(this.navList[0].ranktype)
+  },
+  mounted () {
+    // eslint-disable-next-line no-new
+    new BScroll('.my-scroll', { // 需要传递父级元素
+      scrollY: true,
+      click: true
+    })
   }
 }
 </script>

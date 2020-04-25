@@ -1,5 +1,5 @@
 <template>
-  <div v-if="contentList.length>0">
+  <div v-if="contentList.length>0" class="my-scroll">
     <div class="card" v-for="item1 in contentList" :key="item1.specialid">
       <div class="header">
         <p>

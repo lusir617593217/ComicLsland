@@ -5,6 +5,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 // 如果不需要转圈配置如下代码，默认是 true
 NProgress.configure({ showSpinner: false })
+NProgress.configure({ easing: 'ease', speed: 800 })
 
 Vue.use(VueRouter)
 
@@ -104,7 +105,9 @@ router.beforeEach((to, from, next) => {
 
 // 全局后置路由守卫
 router.afterEach(() => {
-  NProgress.done() // 进度条消失
+  setTimeout(() => {
+    NProgress.done() // 进度条消失
+  }, 500)
 })
 
 export default router

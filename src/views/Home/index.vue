@@ -12,20 +12,22 @@
       </router-link>
     </div>
     <div id="content">
-      <!-- 轮播图 -->
-      <Swiper class="my-swiper" :autoplay="2000">
-        <Swiperitem v-for="item in swiperList" :key="item.id">
-          <img :src="item.imageurl" alt="">
-        </Swiperitem>
-      </Swiper>
-      <!-- nav 导航 -->
-      <HomeNav></HomeNav>
+      <main>
+        <!-- 轮播图 -->
+        <Swiper class="my-swiper" :autoplay="2000">
+          <Swiperitem v-for="item in swiperList" :key="item.id">
+            <img :src="item.imageurl" alt="">
+          </Swiperitem>
+        </Swiper>
+        <!-- nav 导航 -->
+        <HomeNav></HomeNav>
 
-      <!-- 卡片 -->
-      <HomeCard :contentList="contentList"></HomeCard>
+        <!-- 卡片 -->
+        <HomeCard :contentList="contentList"></HomeCard>
 
-      <!-- 版权备案 copyright -->
-      <Copyright></Copyright>
+        <!-- 版权备案 copyright -->
+        <Copyright></Copyright>
+      </main>
     </div>
   </div>
 </template>
@@ -42,6 +44,9 @@ import Copyright from './Copyrigth'
 
 // 引入 getBanner 接口函数
 import { getBanner, getContent } from '../../api/cartoon'
+
+// 引入滚动插件
+import BScroll from 'better-scroll'
 export default {
   data () {
     return {
@@ -62,6 +67,13 @@ export default {
     })
     getContent().then(res => {
       this.contentList = res.info
+    })
+  },
+  mounted () {
+    // eslint-disable-next-line no-new
+    new BScroll('#content', { // 需要传递父级元素
+      scrollY: true,
+      click: true
     })
   }
 }

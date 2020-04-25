@@ -46,10 +46,10 @@ export default {
       // 在原数据中随机抽取六项数据
       const temArr = []
       arr.forEach(item => {
-        const one = this.recommentList.filter((val, index) => {
-          return index === item
-        })
-        temArr.push(one[0])
+        // const one = this.recommentList.filter((val, index) => {
+        //   return index === item
+        // })
+        temArr.push(this.recommentList[item])
       })
       return temArr
     }

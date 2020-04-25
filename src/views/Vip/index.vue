@@ -2,18 +2,20 @@
   <div class="page-vip">
     <MyHeader title="Vip专区"></MyHeader>
 
-    <main>
-      <!-- card -->
-      <div class="cartoon-card" v-for="item in typeList" :key="item.bigbookid">
-        <div class="card-left">
-          <img v-lazy="item.coverurl" alt="">
+    <main class="my-scroll">
+      <section>
+        <!-- card -->
+        <div class="cartoon-card" v-for="item in typeList" :key="item.bigbookid">
+          <div class="card-left">
+            <img v-lazy="item.coverurl" alt="">
+          </div>
+          <div class="card-right">
+            <h3>{{ item.bigbook_name }}</h3>
+            <p class="author">作者：<span>{{ item.bigbook_author }}</span></p>
+            <p>人气：{{ (item.bigbookview/100000000).toFixed(2) }}亿</p>
+          </div>
         </div>
-        <div class="card-right">
-          <h3>{{ item.bigbook_name }}</h3>
-          <p class="author">作者：<span>{{ item.bigbook_author }}</span></p>
-          <p>人气：{{ (item.bigbookview/100000000).toFixed(2) }}亿</p>
-        </div>
-      </div>
+      </section>
     </main>
   </div>
 </template>
@@ -26,6 +28,8 @@ import MyHeader from '../../components/MyHeader'
 import { getVipList } from '../../api/cartoon'
 // 引入 解密文件
 import { unformat } from '../../utils/apiHelper'
+// 引入滚动插件
+import BScroll from 'better-scroll'
 
 export default {
   name: 'Vip',
@@ -42,7 +46,6 @@ export default {
       getVipList().then(res => {
         if (res.code === 200) {
           const info = JSON.parse(unformat(res.info))
-          console.log(info)
           this.typeList = info.comicsList
         } else {
           alert(res.code_msg)
@@ -55,6 +58,13 @@ export default {
   },
   created () {
     this.getVipList()
+  },
+  mounted () {
+    // eslint-disable-next-line no-new
+    new BScroll('.my-scroll', { // 需要传递父级元素
+      scrollY: true,
+      click: true
+    })
   }
 }
 </script>

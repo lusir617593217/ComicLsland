@@ -1,0 +1,65 @@
+{
+  "id": "1774391",
+  "name": "cartoon",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "551965",
+      "name": "箭头",
+      "font_class": "arrow-right-copy-copy",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "5075584",
+      "name": "笔",
+      "font_class": "bi",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "5648956",
+      "name": "精彩时刻，星星，五角星",
+      "font_class": "jingcaishike",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "6367284",
+      "name": "M",
+      "font_class": "M",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "6626203",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "2155564",
+      "name": "时钟",
+      "font_class": "shizhong",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "7084906",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "4933164",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    }
+  ]
+}
