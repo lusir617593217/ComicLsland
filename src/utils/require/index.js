@@ -5,8 +5,8 @@ import { Notify } from 'vant'
 
 // 创建 axios 实例
 const instance = axios.create({
-  baseURL: 'http://localhost:8080',
-  timeout: 5000
+  baseURL: process.env.NODE_ENV === 'production' ? 'http://106.53.120.144' : 'http://localhost:8080',
+  timeout: 10000
 })
 
 // 设置路由拦截
